@@ -21,6 +21,8 @@ function App() {
     setTieneAcceso(true);
     setToken(dato.token);
   };
+  console.log(tieneAcceso);
+  console.log(token);
 
   return (
     <div className="App">
