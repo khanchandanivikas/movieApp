@@ -1,14 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import "../style/Header.css";
+import { Turn as Hamburger } from "hamburger-react";
+import "../Style/SearchBox.css";
 
-const Header = () => {
+const Header = (props) => {
+  const onTextChange = props.onTextChange;
+  const isOpen = props.isOpen;
+  const handleToggle = props.handleToggle;
+
   return (
-    <header>
-      <Link to="/">INICIO</Link>
-      <Link to="/auth">AUTHENTICACION</Link>
-      <Link to="/crearDestino">CREAR DESTINO</Link>
-    </header>
+    <div className="search">
+      <div className={isOpen ? "hamburger-active" : "hamburger-inactive"}>
+        <Hamburger
+          color="#37474F"
+          rounded
+          toggled={isOpen}
+          toggle={handleToggle}
+        />
+      </div>
+      <form action="">
+        <input
+          onChange={onTextChange}
+          type="text"
+          name="movieName"
+          placeholder="Movie Name"
+        />
+      </form>
+    </div>
   );
 };
 

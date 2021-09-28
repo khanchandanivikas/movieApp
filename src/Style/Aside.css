@@ -1,0 +1,84 @@
+/* aside bar */
+.aside {
+    background-color: #455A64;
+    width: 15rem;
+    height: 100%;
+    display: flex;
+    position: fixed;
+    overflow-x: scroll;
+    flex-direction: column;
+    justify-content: flex-start;
+    z-index: 2;
+    box-shadow: none;
+    transition: all 0.5s ease;
+}
+
+/* hamburger menu aside */
+.aside-active {
+    background-color: #455A64;
+    width: 15rem;
+    height: 100%;
+    display: flex;
+    position: fixed;
+    overflow-x: scroll;
+    flex-direction: column;
+    justify-content: flex-start;
+    left: 0;
+    z-index: 2;
+    /* box-shadow: 1rem 0 2rem rgb(0 0 0 / 10%); */
+    transition: all 0.5s ease;
+}
+
+.aside::-webkit-scrollbar {
+    width: 0px;
+}
+
+.aside-active::-webkit-scrollbar {
+    width: 0px;
+}
+
+/* logo */
+.cine-logo {
+    width: 60%;
+    margin: 2rem;
+}
+
+/* unordered list */
+.aside-text-list {
+    padding: 1rem;
+    min-height: 70vh;
+}
+
+/* aside list item */
+li {
+    list-style-type: none;
+    cursor: pointer;
+}
+
+/* list item text */
+.aside-text {
+    color: #CCDFE3;
+    font-size: 0.9rem;
+    padding: 0.7rem;
+}
+
+.aside-text:hover {
+    border: 2px solid #37474F;
+    border-radius: 20px;
+    width: 100%;
+    color: #CCDFE3;
+    font-size: 0.9rem;
+    padding: 9.2px;
+}
+
+/* play icon */
+i {
+    margin-right: 0.8rem;
+}
+
+@media only screen and (max-width: 1024px) {
+    .aside {
+        left: -100%;
+        transition: all 0.5s ease;
+    }
+}

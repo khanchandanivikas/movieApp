@@ -1,0 +1,27 @@
+.tendencia {
+    width: 100%;
+    margin: auto;
+    margin-top: 15px;
+}
+
+.tendencia img {
+    width: 200px !important;
+}
+
+.tendencia .swiper-container {
+    width: 70% !important;
+    margin: auto;
+    padding-bottom: 29px !important;
+}
+
+.tendencia .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 200px;
+    height: 300px;
+}
+
+.tendencia .swiper-slide img {
+    display: block;
+    width: 100%;
+}
