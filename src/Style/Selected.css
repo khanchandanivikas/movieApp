@@ -2,6 +2,7 @@
 .selected-container {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   padding: 1rem;
 }
 
@@ -19,6 +20,7 @@
 
 .selected-text {
   padding: 2rem;
+  padding-top: 0;
 }
 
 .selected-text button {
@@ -108,5 +110,24 @@ h6 {
 
   .selected-img {
     width: 60%;
+    margin-top: 2rem;
+  }
+
+  .selected-text {
+    margin-top: 2rem;
+  }
+
+  .selected-container {
+    padding: 0;
+  }
+}
+
+@media only screen and (max-width: 481px) {
+  .selected-img {
+    margin-top: 0.7rem;
+  }
+
+  .selected-text {
+    padding: 1rem;
   }
 }

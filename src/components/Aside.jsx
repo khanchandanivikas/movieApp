@@ -9,6 +9,7 @@ const Aside = (props) => {
   const setGenreId = props.setGenreId;
   const hamburger = props.isOpen;
   const handleToggle = props.handleToggle;
+  const setCurrentPage = props.setCurrentPage;
 
   return (
     <div key={genreList.id} className={hamburger ? "aside-active" : "aside"}>
@@ -24,6 +25,7 @@ const Aside = (props) => {
         {genreList.map((genre) => {
           const handleGenreSelect = () => {
             setGenreId(genre.id);
+            setCurrentPage(1);
             history.push("/genres");
             handleToggle();
           };

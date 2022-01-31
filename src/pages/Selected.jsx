@@ -53,7 +53,7 @@ const Selected = (props) => {
           </button>
         </div>
       </div>
-      <h2 style={{ margin: "3rem 1rem" }}>RECOMMENDED</h2>
+      <h2 style={{ margin: "3rem 0 3rem 0" }}>RECOMMENDED</h2>
       <Recommended
         key={recomendedMovies.id}
         recomendedMovies={recomendedMovies}

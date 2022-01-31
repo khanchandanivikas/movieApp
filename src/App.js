@@ -27,9 +27,20 @@ function App() {
   const [selectedMovieTrailer, setSelectedMovieTrailer] = useState([]);
   const [recomendedMovies, setRecomendedMovies] = useState([]);
   const [isOpen, setOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(null);
 
   const handleToggle = () => {
     setOpen(!isOpen);
+    setCurrentPage(1);
+  };
+
+  const prev = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const next = () => {
+    setCurrentPage(currentPage + 1);
   };
 
   const getGenesList = async () => {
@@ -44,15 +55,18 @@ function App() {
     }
   };
 
-  const getGenesMovies = async (id) => {
+  const getGenesMovies = async (id, page) => {
     try {
       const request = await axios.get(
         "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=" +
           process.env.REACT_APP_API_KEY +
-          `&with_genres=${id}`
+          `&with_genres=${id}` +
+          `&page=${page}`
       );
       const datos = await request.data;
+      console.log(datos);
       setGenreMovies(datos.results);
+      setTotalPages(datos.results.total_pages);
     } catch (error) {
       console.log(error);
     }
@@ -71,11 +85,12 @@ function App() {
     }
   };
 
-  const getPopular = async () => {
+  const getPopular = async (page) => {
     try {
       const request = await axios.get(
         "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=" +
-          process.env.REACT_APP_API_KEY
+          process.env.REACT_APP_API_KEY +
+          `&page=${page}`
       );
       const datos = await request.data;
       setMovieList(datos.results);
@@ -116,10 +131,9 @@ function App() {
       const datos = await request.data;
       const videos = datos.results;
       const trailer = videos.find((video) => {
-        return video.name === "Official Trailer"
-      })
+        return video.name === "Official Trailer";
+      });
       setSelectedMovieTrailer(trailer.key);
-      console.log(trailer.key);
     } catch (error) {
       console.log(error);
     }
@@ -169,9 +183,9 @@ function App() {
   useEffect(() => {
     getGenesList();
     getUpcoming();
-    getPopular();
+    getPopular(currentPage);
     getMovieList(searchValue);
-    getGenesMovies(genreId);
+    getGenesMovies(genreId, currentPage);
     getSelectedMovie(selectedMovieId);
     getRecomendedMovie(selectedMovieId);
     const datosRecuperar = JSON.parse(localStorage.getItem("selectedMovie"));
@@ -185,7 +199,7 @@ function App() {
       getSelectedMovieTrailer(datosRecuperar.datos.id);
     }
     // eslint-disable-next-line
-  }, [searchValue, genreId, selectedMovieId]);
+  }, [searchValue, genreId, currentPage, selectedMovieId]);
 
   return (
     <div className="App">
@@ -201,6 +215,7 @@ function App() {
           setGenreId={setGenreId}
           isOpen={isOpen}
           handleToggle={handleToggle}
+          setCurrentPage={setCurrentPage}
         />
         <div className="container">
           <Switch>
@@ -211,6 +226,10 @@ function App() {
                 upcoming={upcoming}
                 movieList={movieList}
                 setSelectedMovieId={setSelectedMovieId}
+                prev={prev}
+                next={next}
+                currentPage={currentPage}
+                totalPages={totalPages}
               />
             </Route>
             <Route path="/genres">
@@ -219,6 +238,10 @@ function App() {
                   key={genreMovies.id}
                   genreMovies={genreMovies}
                   setSelectedMovieId={setSelectedMovieId}
+                  prev={prev}
+                  next={next}
+                  currentPage={currentPage}
+                  totalPages={totalPages}
                 />
               )}
             </Route>

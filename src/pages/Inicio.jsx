@@ -7,6 +7,10 @@ const Inicio = (props) => {
   const movieList = props.movieList;
   const searchValue = props.searchValue;
   const setSelectedMovieId = props.setSelectedMovieId;
+  const prev = props.prev;
+  const next = props.next;
+  const currentPage = props.currentPage;
+  const totalPages = props.totalPages;
   return (
     <div>
       <h2>UPCOMING</h2>
@@ -22,6 +26,10 @@ const Inicio = (props) => {
         setSelectedMovieId={setSelectedMovieId}
         key={movieList.id}
         movieList={movieList}
+        prev={prev}
+        next={next}
+        currentPage={currentPage}
+        totalPages={totalPages}
       />
     </div>
   );
