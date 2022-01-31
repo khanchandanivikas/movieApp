@@ -23,6 +23,7 @@ function App() {
   const [timeoutId, setTimeoutId] = useState("");
   const [selectedMovieId, setSelectedMovieId] = useState("");
   const [selectedMovie, setSelectedMovie] = useState([]);
+  // genres of selected movie
   const [selectedMovieGenres, setSelectedMovieGenres] = useState([]);
   const [recomendedMovies, setRecomendedMovies] = useState([]);
   const [isOpen, setOpen] = useState(false);
@@ -156,7 +157,6 @@ function App() {
     getRecomendedMovie(selectedMovieId);
     const datosRecuperar = JSON.parse(localStorage.getItem("selectedMovie"));
     const datosRecuperarRecomends = JSON.parse(localStorage.getItem("selectedMovieRecommends"));
-    console.log(datosRecuperarRecomends)
     if (datosRecuperar) {
       setSelectedMovie(datosRecuperar.datos);
       setSelectedMovieGenres(datosRecuperar.datos.genres);
