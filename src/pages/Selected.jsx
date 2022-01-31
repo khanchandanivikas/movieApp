@@ -6,12 +6,13 @@ import Recommended from "../Components/Recommended";
 
 const Selected = (props) => {
   const selectedMovie = props.selectedMovie;
+  const selectedMovieGenres = props.selectedMovieGenres;
   const recomendedMovies = props.recomendedMovies;
   const setSelectedMovieId = props.setSelectedMovieId;
   var url = `https://image.tmdb.org/t/p/w500${selectedMovie.poster_path}`;
   const percentage = (selectedMovie.vote_average / 10) * 100;
   return (
-    <div>
+    <div key={selectedMovie.id}>
       <div className="selected-container">
         <div className="selected-img-container">
           <img className="selected-img" src={url} alt="selected movie" />
@@ -19,11 +20,11 @@ const Selected = (props) => {
         <div className="selected-text">
           <h1>{selectedMovie.title}</h1>
           <h2 className="selected-title">{selectedMovie.tagline}</h2>
-          {/* <div className="selected-genre-list">
-            {selectedMovie.genres.length > 0 && selectedMovie.genres.map((genre) => {
-              return <p className="selected-genre-text">{genre.name}</p>;
+          <div className="selected-genre-list">
+            {selectedMovieGenres.map((genre) => {
+              return <p key={genre.id} className="selected-genre-text">{genre.name}</p>;
             })}
-          </div> */}
+          </div>
           <h4>
             <span>{selectedMovie.release_date}</span>{" "}
             <span>{selectedMovie.runtime}Mins</span>

@@ -8,12 +8,14 @@ import "../../Style/Movies.css";
 const ElementMovies = (props) => {
   let history = useHistory();
   const movie = props.movie;
-  const percentage = (movie.vote_average / 10) * 100;
+  const percentage = Math.ceil((movie.vote_average / 10) * 100);
   var url = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
   const setSelectedMovieId = props.setSelectedMovieId;
   const handleSelectedMovie = () => {
     setSelectedMovieId(movie.id);
-    history.push("/selected");
+    setTimeout(() => {
+      history.push("/selected");
+    }, 500);
   };
   return (
     <Flippy

@@ -14,7 +14,7 @@ const Upcoming = (props) => {
   const upcomingMovies = props.upcoming;
   const setSelectedMovieId = props.setSelectedMovieId;
   return (
-    <div className="tendencia">
+    <div key={upcomingMovies.id} className="tendencia">
       <Swiper
         effect={"coverflow"}
         grabCursor={true}
@@ -34,10 +34,12 @@ const Upcoming = (props) => {
           var url = `https://image.tmdb.org/t/p/w500${upcoming.poster_path}`;
           const handleSelectedMovie = () => {
             setSelectedMovieId(upcoming.id);
-            history.push("/selected");
+            setTimeout(() => {
+              history.push("/selected");
+            }, 500);
           };
           return (
-            <SwiperSlide onClick={handleSelectedMovie}>
+            <SwiperSlide key={upcoming.id} onClick={handleSelectedMovie}>
               <img className="slider-img" src={url} alt="upcoming" />
             </SwiperSlide>
           );

@@ -11,7 +11,7 @@ const Aside = (props) => {
   const handleToggle = props.handleToggle;
 
   return (
-    <div className={hamburger ? "aside-active" : "aside"}>
+    <div key={genreList.id} className={hamburger ? "aside-active" : "aside"}>
       <Link to="/">
         <img
           onClick={handleToggle}
@@ -28,7 +28,7 @@ const Aside = (props) => {
             handleToggle();
           };
           return (
-            <li onClick={handleGenreSelect} className="aside-text">
+            <li key={genre.id} onClick={handleGenreSelect} className="aside-text">
               <i className="far fa-play-circle"></i> {genre.name}
             </li>
           );

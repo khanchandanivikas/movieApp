@@ -23,6 +23,7 @@ function App() {
   const [timeoutId, setTimeoutId] = useState("");
   const [selectedMovieId, setSelectedMovieId] = useState("");
   const [selectedMovie, setSelectedMovie] = useState([]);
+  const [selectedMovieGenres, setSelectedMovieGenres] = useState([]);
   const [recomendedMovies, setRecomendedMovies] = useState([]);
   const [isOpen, setOpen] = useState(false);
 
@@ -113,6 +114,13 @@ function App() {
       );
       const datos = await request.data;
       setSelectedMovie(datos);
+      setSelectedMovieGenres(datos.genres);
+      localStorage.setItem(
+        "selectedMovie",
+        JSON.stringify({
+          datos,
+        })
+      );
     } catch (error) {
       console.log(error);
     }
@@ -125,7 +133,14 @@ function App() {
           process.env.REACT_APP_API_KEY
       );
       const datos = await request.data;
+      const recomends = datos.results;
       setRecomendedMovies(datos.results);
+      localStorage.setItem(
+        "selectedMovieRecommends",
+        JSON.stringify({
+          recomends,
+        })
+      );
     } catch (error) {
       console.log(error);
     }
@@ -139,6 +154,14 @@ function App() {
     getGenesMovies(genreId);
     getSelectedMovie(selectedMovieId);
     getRecomendedMovie(selectedMovieId);
+    const datosRecuperar = JSON.parse(localStorage.getItem("selectedMovie"));
+    const datosRecuperarRecomends = JSON.parse(localStorage.getItem("selectedMovieRecommends"));
+    console.log(datosRecuperarRecomends)
+    if (datosRecuperar) {
+      setSelectedMovie(datosRecuperar.datos);
+      setSelectedMovieGenres(datosRecuperar.datos.genres);
+      setRecomendedMovies(datosRecuperarRecomends.recomends);
+    }
   }, [searchValue, genreId, selectedMovieId]);
 
   return (
@@ -181,6 +204,7 @@ function App() {
                 <Selected
                   key={selectedMovie.id}
                   selectedMovie={selectedMovie}
+                  selectedMovieGenres={selectedMovieGenres}
                   recomendedMovies={recomendedMovies}
                   setSelectedMovieId={setSelectedMovieId}
                 />
