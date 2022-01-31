@@ -1,16 +1,23 @@
 import React from "react";
+import { useState } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import "../Style/Selected.css";
 import Recommended from "../Components/Recommended";
+import VideoModal from "../Components/VideoModal";
 
 const Selected = (props) => {
   const selectedMovie = props.selectedMovie;
+  const selectedMovieTrailer = props.selectedMovieTrailer;
   const selectedMovieGenres = props.selectedMovieGenres;
   const recomendedMovies = props.recomendedMovies;
   const setSelectedMovieId = props.setSelectedMovieId;
   var url = `https://image.tmdb.org/t/p/w500${selectedMovie.poster_path}`;
   const percentage = (selectedMovie.vote_average / 10) * 100;
+  const [videoPopup, setVideoPopup] = useState(false);
+  const toggleVideoPopup = () => {
+    setVideoPopup(!videoPopup);
+  };
   return (
     <div key={selectedMovie.id}>
       <div className="selected-container">
@@ -22,7 +29,11 @@ const Selected = (props) => {
           <h2 className="selected-title">{selectedMovie.tagline}</h2>
           <div className="selected-genre-list">
             {selectedMovieGenres.map((genre) => {
-              return <p key={genre.id} className="selected-genre-text">{genre.name}</p>;
+              return (
+                <p key={genre.id} className="selected-genre-text">
+                  {genre.name}
+                </p>
+              );
             })}
           </div>
           <h4>
@@ -37,6 +48,9 @@ const Selected = (props) => {
           </div>
           <h3>OVERVIEW</h3>
           <p>{selectedMovie.overview}</p>
+          <button onClick={toggleVideoPopup}>
+            Trailer <i className="fas fa-play"></i>
+          </button>
         </div>
       </div>
       <h2 style={{ margin: "3rem 1rem" }}>RECOMMENDED</h2>
@@ -45,6 +59,12 @@ const Selected = (props) => {
         recomendedMovies={recomendedMovies}
         setSelectedMovieId={setSelectedMovieId}
       />
+      {videoPopup ? (
+        <VideoModal
+          toggleVideoPopup={toggleVideoPopup}
+          selectedMovieTrailer={selectedMovieTrailer}
+        />
+      ) : null}
     </div>
   );
 };

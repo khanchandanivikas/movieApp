@@ -23,8 +23,8 @@ function App() {
   const [timeoutId, setTimeoutId] = useState("");
   const [selectedMovieId, setSelectedMovieId] = useState("");
   const [selectedMovie, setSelectedMovie] = useState([]);
-  // genres of selected movie
   const [selectedMovieGenres, setSelectedMovieGenres] = useState([]);
+  const [selectedMovieTrailer, setSelectedMovieTrailer] = useState([]);
   const [recomendedMovies, setRecomendedMovies] = useState([]);
   const [isOpen, setOpen] = useState(false);
 
@@ -107,6 +107,24 @@ function App() {
     setTimeoutId(timeout);
   };
 
+  const getSelectedMovieTrailer = async (movieId) => {
+    try {
+      const request = await axios.get(
+        `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=` +
+          process.env.REACT_APP_API_KEY
+      );
+      const datos = await request.data;
+      const videos = datos.results;
+      const trailer = videos.find((video) => {
+        return video.name === "Official Trailer"
+      })
+      setSelectedMovieTrailer(trailer.key);
+      console.log(trailer.key);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const getSelectedMovie = async (movieId) => {
     try {
       const request = await axios.get(
@@ -114,6 +132,7 @@ function App() {
           process.env.REACT_APP_API_KEY
       );
       const datos = await request.data;
+      getSelectedMovieTrailer(movieId);
       setSelectedMovie(datos);
       setSelectedMovieGenres(datos.genres);
       localStorage.setItem(
@@ -156,12 +175,16 @@ function App() {
     getSelectedMovie(selectedMovieId);
     getRecomendedMovie(selectedMovieId);
     const datosRecuperar = JSON.parse(localStorage.getItem("selectedMovie"));
-    const datosRecuperarRecomends = JSON.parse(localStorage.getItem("selectedMovieRecommends"));
+    const datosRecuperarRecomends = JSON.parse(
+      localStorage.getItem("selectedMovieRecommends")
+    );
     if (datosRecuperar) {
       setSelectedMovie(datosRecuperar.datos);
       setSelectedMovieGenres(datosRecuperar.datos.genres);
       setRecomendedMovies(datosRecuperarRecomends.recomends);
+      getSelectedMovieTrailer(datosRecuperar.datos.id);
     }
+    // eslint-disable-next-line
   }, [searchValue, genreId, selectedMovieId]);
 
   return (
@@ -204,6 +227,7 @@ function App() {
                 <Selected
                   key={selectedMovie.id}
                   selectedMovie={selectedMovie}
+                  selectedMovieTrailer={selectedMovieTrailer}
                   selectedMovieGenres={selectedMovieGenres}
                   recomendedMovies={recomendedMovies}
                   setSelectedMovieId={setSelectedMovieId}

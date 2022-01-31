@@ -21,6 +21,22 @@
   padding: 2rem;
 }
 
+.selected-text button {
+  padding: 0.6rem 1.5rem;
+  color: #263238;
+  cursor: pointer;
+  border: 1px solid #263238;
+  background-color: transparent;
+  border-radius: 5rem;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.selected-text button:hover {
+  color: #fff;
+  background-color: #263238;
+}
+
 .selected-genre-list {
   display: flex;
   padding: 15px 5px;
