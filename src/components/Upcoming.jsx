@@ -35,7 +35,7 @@ const Upcoming = (props) => {
           const handleSelectedMovie = () => {
             setSelectedMovieId(upcoming.id);
             setTimeout(() => {
-              history.push("/selected");
+              history.push(`/selected/${upcoming.id}`);
             }, 500);
           };
           return (

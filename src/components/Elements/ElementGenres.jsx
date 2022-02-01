@@ -8,13 +8,14 @@ import "../../Style/Movies.css";
 const ElementGenres = (props) => {
   let history = useHistory();
   const genreMovie = props.element;
+  const mov = genreMovie.id;
   const percentage = Math.ceil((genreMovie.vote_average / 10) * 100);
   var url = `https://image.tmdb.org/t/p/w500${genreMovie.poster_path}`;
   const setSelectedMovieId = props.setSelectedMovieId;
   const handleSelectedMovie = () => {
     setSelectedMovieId(genreMovie.id);
     setTimeout(() => {
-      history.push("/selected");
+      history.push(`/selected/${mov}`);
     }, 500);
   };
   return (

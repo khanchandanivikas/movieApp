@@ -22,4 +22,9 @@
     color: #263238;
     background-color: #fff;
     border: 1px solid #263238;
-  }
+}
+
+.fa-arrow-right {
+    padding-left: 10px;
+    margin-right: -2px;
+}

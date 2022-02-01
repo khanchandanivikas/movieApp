@@ -232,7 +232,7 @@ function App() {
                 totalPages={totalPages}
               />
             </Route>
-            <Route path="/genres">
+            <Route path="/genres/:genreName">
               {genreMovies && (
                 <Genres
                   key={genreMovies.id}
@@ -245,7 +245,7 @@ function App() {
                 />
               )}
             </Route>
-            <Route path="/selected">
+            <Route path="/selected/:movieId">
               {selectedMovie && (
                 <Selected
                   key={selectedMovie.id}

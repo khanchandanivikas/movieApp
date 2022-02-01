@@ -8,13 +8,14 @@ import "../../Style/Movies.css";
 const ElementRecommended = (props) => {
   let history = useHistory();
   const recommendedMovie = props.element;
+  const mov = recommendedMovie.id;
   const percentage = Math.ceil((recommendedMovie.vote_average / 10) * 100);
   var url = `https://image.tmdb.org/t/p/w500${recommendedMovie.poster_path}`;
   const setSelectedMovieId = props.setSelectedMovieId;
   const handleSelectedMovie = () => {
     setSelectedMovieId(recommendedMovie.id);
     setTimeout(() => {
-      history.push("/selected");
+      history.push(`/selected/${mov}`);
     }, 500);
   };
 

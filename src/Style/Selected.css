@@ -49,6 +49,11 @@
   color: #546e7a;
 }
 
+.fa-play {
+  padding-left: 10px;
+  margin-right: -1.2px;
+}
+
 /* title */
 h1 {
   font-weight: 300;

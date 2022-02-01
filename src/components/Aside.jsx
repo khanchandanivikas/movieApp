@@ -26,7 +26,7 @@ const Aside = (props) => {
           const handleGenreSelect = () => {
             setGenreId(genre.id);
             setCurrentPage(1);
-            history.push("/genres");
+            history.push(`/genres/${genre.name}`);
             handleToggle();
           };
           return (
