@@ -9,6 +9,7 @@ const Genres = (props) => {
   const next = props.next;
   const currentPage = props.currentPage;
   const totalPages = props.totalPages;
+
   return (
     <div>
       <div className="movie-list">

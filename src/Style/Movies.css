@@ -30,7 +30,7 @@
 
 @media only screen and (max-width: 1024px) {
     .movie-list {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
     }
 }
 
