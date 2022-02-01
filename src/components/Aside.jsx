@@ -35,6 +35,8 @@ const Aside = (props) => {
             </li>
           );
         })}
+        <li className="credits">Powered By</li>
+        <li className="credits">THE MOVIE DB</li>
       </ul>
     </div>
   );
