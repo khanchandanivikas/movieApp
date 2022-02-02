@@ -64,7 +64,6 @@ function App() {
           `&page=${page}`
       );
       const datos = await request.data;
-      console.log(datos);
       setGenreMovies(datos.results);
       setTotalPages(datos.results.total_pages);
     } catch (error) {
@@ -133,7 +132,8 @@ function App() {
       const trailer = videos.find((video) => {
         return video.name === "Official Trailer";
       });
-      setSelectedMovieTrailer(trailer.key);
+      const vid = videos[0].key;
+      setSelectedMovieTrailer(trailer ? trailer.key : vid);
     } catch (error) {
       console.log(error);
     }

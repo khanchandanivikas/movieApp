@@ -12,7 +12,7 @@ const Inicio = (props) => {
   const currentPage = props.currentPage;
   const totalPages = props.totalPages;
   return (
-    <div>
+    <main>
       <h2>UPCOMING</h2>
       <Upcoming
         style={{ marginLeft: "7%", paddingTop: "5%", width: "100%" }}
@@ -31,7 +31,7 @@ const Inicio = (props) => {
         currentPage={currentPage}
         totalPages={totalPages}
       />
-    </div>
+    </main>
   );
 };
 

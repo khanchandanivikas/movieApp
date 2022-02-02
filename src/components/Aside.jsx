@@ -12,7 +12,7 @@ const Aside = (props) => {
   const setCurrentPage = props.setCurrentPage;
 
   return (
-    <div key={genreList.id} className={hamburger ? "aside-active" : "aside"}>
+    <aside key={genreList.id} className={hamburger ? "aside-active" : "aside"}>
       <Link to="/">
         <img
           onClick={handleToggle}
@@ -38,7 +38,7 @@ const Aside = (props) => {
         <li className="credits">Powered By</li>
         <li className="credits">THE MOVIE DB</li>
       </ul>
-    </div>
+    </aside>
   );
 };
 
