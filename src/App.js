@@ -66,7 +66,6 @@ function App() {
       const datos = await request.data;
       setGenreMovies(datos.results);
       setTotalPages(datos.results.total_pages);
-      window.scrollTo(0, 0);
     } catch (error) {
       console.log(error);
     }
@@ -156,7 +155,6 @@ function App() {
           datos,
         })
       );
-    window.scrollTo(0, 0);
     } catch (error) {
       console.log(error);
     }
@@ -206,6 +204,7 @@ function App() {
       setRecomendedMovies(datosRecuperarRecomends.recomends);
       getSelectedMovieTrailer(datosRecuperar.datos.id);
     }
+    window.scrollTo(0, 0);
     // eslint-disable-next-line
   }, [searchValue, genreId, currentPage, selectedMovieId]);
 
