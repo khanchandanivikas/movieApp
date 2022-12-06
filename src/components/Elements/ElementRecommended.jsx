@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import Flippy, { FrontSide, BackSide } from "react-flippy";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import "../../Style/Movies.css";
+import "../../style/movies.css";
 
 const ElementRecommended = (props) => {
   let history = useHistory();

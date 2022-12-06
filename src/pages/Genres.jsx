@@ -1,6 +1,6 @@
 import React from "react";
-import ElementGenres from "../Components/Elements/ElementGenres";
-import Pagination from "../Components/Pagination";
+import ElementGenres from "../components/elements/ElementGenres";
+import Pagination from "../components/Pagination";
 
 const Genres = (props) => {
   const genreMovies = props.genreMovies;

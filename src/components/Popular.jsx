@@ -1,6 +1,6 @@
 import React from "react";
-import ElementMovies from "../Components/Elements/ElementMovies";
-import Pagination from "../Components/Pagination";
+import ElementMovies from "../components/elements/ElementMovies";
+import Pagination from "../components/Pagination";
 
 const Popular = (props) => {
   const movieList = props.movieList;

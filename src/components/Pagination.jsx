@@ -1,5 +1,5 @@
 import React from "react";
-import "../Style/Pagination.css";
+import "../style/pagination.css";
 
 const Pagination = (props) => {
   const prev = props.prev;

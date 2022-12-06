@@ -1,6 +1,6 @@
 import React from "react";
 import { Turn as Hamburger } from "hamburger-react";
-import "../Style/SearchBox.css";
+import "../style/searchBox.css";
 
 const Header = (props) => {
   const onTextChange = props.onTextChange;

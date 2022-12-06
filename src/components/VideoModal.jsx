@@ -1,5 +1,5 @@
 import React from "react";
-import "../Style/VideoModal.css";
+import "../style/videoModal.css";
 
 const VideoModal = (props) => {
   const toggleVideoPopup = props.toggleVideoPopup;

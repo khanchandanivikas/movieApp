@@ -1,6 +1,6 @@
 import React from "react";
-import Upcoming from "../Components/Upcoming";
-import Popular from "../Components/Popular";
+import Upcoming from "../components/Upcoming";
+import Popular from "../components/Popular";
 
 const Inicio = (props) => {
   const upcoming = props.upcoming;

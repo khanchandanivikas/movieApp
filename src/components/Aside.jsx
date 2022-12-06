@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import homeCinema from "../images/homeCinema.png";
-import "../Style/Aside.css";
+import "../style/aside.css";
 
 const Aside = (props) => {
   let history = useHistory();

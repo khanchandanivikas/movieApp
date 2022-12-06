@@ -1,4 +1,4 @@
-import "./App.css";
+import "./app.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import {
@@ -7,11 +7,11 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import Header from "./Components/Header";
-import Aside from "./Components/Aside";
-import Genres from "./Pages/Genres";
-import Inicio from "./Pages/Inicio";
-import Selected from "./Pages/Selected";
+import Header from "./components/Header";
+import Aside from "./components/Aside";
+import Genres from "./pages/Genres";
+import Inicio from "./pages/Inicio";
+import Selected from "./pages/Selected";
 
 function App() {
   const [genreList, setGenreList] = useState([]);

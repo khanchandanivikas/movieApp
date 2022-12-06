@@ -2,9 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import "../Style/Selected.css";
-import Recommended from "../Components/Recommended";
-import VideoModal from "../Components/VideoModal";
+import "../style/selected.css";
+import Recommended from "../components/Recommended";
+import VideoModal from "../components/VideoModal";
 
 const Selected = (props) => {
   const selectedMovie = props.selectedMovie;

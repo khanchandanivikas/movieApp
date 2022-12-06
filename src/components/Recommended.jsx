@@ -1,5 +1,5 @@
 import React from "react";
-import ElementRecommended from "../Components/Elements/ElementRecommended";
+import ElementRecommended from "../components/elements/ElementRecommended";
 
 const Recommended = (props) => {
   const recomendedMovies = props.recomendedMovies;
