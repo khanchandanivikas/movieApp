@@ -46,7 +46,7 @@ function App() {
   const getGenesList = async () => {
     try {
       const request = await axios.get(
-        "https://api.themoviedb.org/3/genre/movie/list?api_key=df35452f4054f7db9fa3529a5ec517cf"
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`
       );
       const datos = await request.data;
       setGenreList(datos.genres);
