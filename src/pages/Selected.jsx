@@ -13,7 +13,7 @@ const Selected = (props) => {
   const recomendedMovies = props.recomendedMovies;
   const setSelectedMovieId = props.setSelectedMovieId;
   var url = `https://image.tmdb.org/t/p/w500${selectedMovie.poster_path}`;
-  const percentage = (selectedMovie.vote_average / 10) * 100;
+  const percentage = Math.ceil((selectedMovie.vote_average / 10) * 100);
   const [videoPopup, setVideoPopup] = useState(false);
   const toggleVideoPopup = () => {
     setVideoPopup(!videoPopup);
@@ -43,7 +43,7 @@ const Selected = (props) => {
           <div style={{ width: "100px", height: "100px", padding: "5px" }}>
             <CircularProgressbar
               value={percentage}
-              text={`${selectedMovie.vote_average}`}
+              text={`${Math.ceil(selectedMovie.vote_average)}`}
             />
           </div>
           <h3>OVERVIEW</h3>
@@ -54,11 +54,16 @@ const Selected = (props) => {
         </div>
       </div>
       <h2 style={{ margin: "3rem 0 3rem 0" }}>RECOMMENDED</h2>
-      <Recommended
-        key={recomendedMovies.id}
-        recomendedMovies={recomendedMovies}
-        setSelectedMovieId={setSelectedMovieId}
-      />
+      {recomendedMovies.length > 0 ? (
+        <Recommended
+          key={recomendedMovies.id}
+          recomendedMovies={recomendedMovies}
+          setSelectedMovieId={setSelectedMovieId}
+        />
+      ) : (
+        <p>No recommended movies</p>
+      )}
+
       {videoPopup ? (
         <VideoModal
           toggleVideoPopup={toggleVideoPopup}

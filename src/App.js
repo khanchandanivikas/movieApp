@@ -66,6 +66,7 @@ function App() {
       const datos = await request.data;
       setGenreMovies(datos.results);
       setTotalPages(datos.results.total_pages);
+      window.scrollTo(0, 0);
     } catch (error) {
       console.log(error);
     }
@@ -155,6 +156,7 @@ function App() {
           datos,
         })
       );
+    window.scrollTo(0, 0);
     } catch (error) {
       console.log(error);
     }
@@ -179,6 +181,12 @@ function App() {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    };
+  }, []);
 
   useEffect(() => {
     getGenesList();
